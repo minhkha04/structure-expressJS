@@ -1,15 +1,16 @@
 import { BaseError } from "../utils/base-error.util.js";
-import { ACCOUNT_TYPE } from "../constants/account-type.constant.js";
-import { UserRepository } from "../repositories/user.repository.js";
-import { jwtUtils } from "../utils/jwt.util.js";
-import { RefreshTokenService } from "./refresh-token.service.js";
+import ACCOUNT_TYPE from "../constants/account-type.constant.js";
+import UserRepository from "../repositories/user.repository.js";
+import jwtUtils from "../utils/jwt.util.js";
+import RefreshTokenService from "./refresh-token.service.js";
 import { compare, hash } from "../utils/bcrypt.util.js";
-import { OtpService } from "./otp.service.js";
-import { sendMail } from "./mail.service.js";
-import { env } from "../config/environment.config.js";
-import { MAIL_TYPE } from "../constants/mail.constant.js";
+import OtpService from "./otp.service.js";
+import MailService from "./mail.service.js";
+import env from "../config/environment.config.js";
+import MAIL_TYPE from "../constants/mail.constant.js";
+import ROLE from "../constants/role.constant.js";
 
-export const AuthService = {
+const AuthService = {
     async login(email, password, tokenThirdParty, type, ip, device) {
         switch (type) {
             case ACCOUNT_TYPE.LOCAL:
@@ -57,7 +58,7 @@ export const AuthService = {
 
         const user = await UserRepository.createUser({ email, password: await hash(password), accountType: ACCOUNT_TYPE.LOCAL, fullName });
 
-        await sendMail(
+        await MailService.sendMail(
             email,
             MAIL_TYPE.REGISTER_SUCCESS,
             { fullName }
@@ -163,7 +164,7 @@ export const AuthService = {
 
         }
 
-        await sendMail(
+        await MailService.sendMail(
             email,
             type,
             { otp, otpExpiresInMinutes: env.OTP_EXPIRE_MINUTES }
@@ -174,3 +175,5 @@ export const AuthService = {
         await RefreshTokenService.revoke(refreshToken, ip);
     }
 };
+
+export default AuthService;

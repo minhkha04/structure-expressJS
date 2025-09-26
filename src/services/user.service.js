@@ -1,9 +1,9 @@
-import { toUserResponse } from "../mapper/user.mapper.js";
-import { UserRepository } from "../repositories/user.repository.js";
+import toUserResponse from "../mapper/user.mapper.js";
+import UserRepository from "../repositories/user.repository.js";
 import { BaseError } from "../utils/base-error.util.js";
-import { FileService } from "./file.service.js";
+import FileService from "./file.service.js";
 
-export const UserService = {
+const UserService = {
     async getUserById(userId) {
         const user = await UserRepository.findById(userId);
         if (!user) {
@@ -33,3 +33,5 @@ export const UserService = {
         return toUserResponse(userUpdated);
     }
 }
+
+export default UserService;

@@ -1,9 +1,10 @@
 import path from "path";
-import { UPLOAD_TYPE } from "../constants/upload-type.constant.js";
-import { UserService } from "./user.service.js";
+import UPLOAD_TYPE from "../constants/upload-type.constant.js";
+import UserService from "./user.service.js";
 import fs from "fs";
+import { BaseError } from "../utils/base-error.util.js";
 
-export const FileService = {
+const FileService = {
     async uploadFile(req) {
         const relativeDir = path.relative(process.cwd(), req.file.destination);
         const url = path.join(relativeDir, req.file.filename).replace(/\\/g, "/");
@@ -32,3 +33,5 @@ export const FileService = {
         });
     }
 }
+
+export default FileService;

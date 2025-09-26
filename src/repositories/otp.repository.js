@@ -1,6 +1,6 @@
-import { OtpModel } from "../models/otp.model.js";
+import OtpModel from "../models/otp.model.js";
 
-export const OtpRepository = {
+const OtpRepository = {
     async create(data) {
         return OtpModel.create(data);
     },
@@ -13,3 +13,5 @@ export const OtpRepository = {
         return OtpModel.deleteMany({ email });
     }
 }
+
+export default OtpRepository;

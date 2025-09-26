@@ -1,8 +1,8 @@
-import { ACCOUNT_TYPE } from '../constants/account-type.constant.js';
-import { MAIL_TYPE } from '../constants/mail.constant.js';
-import { AuthSchemas } from '../schemas/auth.schema.js';
+import ACCOUNT_TYPE from '../constants/account-type.constant.js';
+import MAIL_TYPE from '../constants/mail.constant.js';
+import AuthSchemas from '../schemas/auth.schema.js';
 
-export const AuthSwagger = {
+const AuthSwagger = {
     '/api/auths/login': {
         post: {
             tags: ['Auths'],
@@ -113,7 +113,6 @@ export const AuthSwagger = {
             responses: {}
         }
     },
-
     '/api/auths/send-otp': {
         post: {
             tags: ['Auths'],
@@ -144,3 +143,5 @@ export const AuthSwagger = {
         }
     }
 };
+
+export default AuthSwagger;

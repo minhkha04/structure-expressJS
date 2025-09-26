@@ -1,22 +1,22 @@
-import { UPLOAD_TYPE } from "../constants/upload-type.constant.js";
+import UPLOAD_TYPE from "../constants/upload-type.constant.js";
 
-export const UploadFileSwagger = {
+const UploadFileSwagger = {
     '/api/files/upload': {
         post: {
             tags: ['File'],
             summary: '',
             security: [{ bearerAuth: [] }],
             parameters: [
-                    {
-                        name: 'type',
-                        in: 'query',
-                        required: true,
-                        schema: {
-                            type: "string",
-                            enum: [UPLOAD_TYPE.AVATAR],
-                        },
-                    }
-                ],
+                {
+                    name: 'type',
+                    in: 'query',
+                    required: true,
+                    schema: {
+                        type: "string",
+                        enum: [UPLOAD_TYPE.AVATAR],
+                    },
+                }
+            ],
             requestBody: {
                 required: true,
                 content: {
@@ -42,3 +42,5 @@ export const UploadFileSwagger = {
         }
     }
 }
+
+export default UploadFileSwagger;

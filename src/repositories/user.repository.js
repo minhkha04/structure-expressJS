@@ -1,6 +1,6 @@
 import User from "../models/user.model.js";
 
-export const UserRepository = {
+const UserRepository = {
     async findUserByEmail(email, accountType) {
         return await User.findOne({ email, accountType });
     },
@@ -18,3 +18,5 @@ export const UserRepository = {
         return await User.findById(userId);
     }
 }
+
+export default UserRepository;

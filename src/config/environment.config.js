@@ -1,6 +1,6 @@
 import 'dotenv/config';
 
-export const env = {
+const env = {
     PORT: process.env.PORT,
     CORS_ORIGIN: process.env.CORS_ORIGIN
         ? process.env.CORS_ORIGIN.split(',').map(o => o.trim())
@@ -17,4 +17,10 @@ export const env = {
     MAIL_PASS: process.env.MAIL_PASS,
     OTP_EXPIRE_MINUTES: process.env.OTP_EXPIRE_MINUTES,
     APP_NAME: process.env.APP_NAME,
+    YOUTUBE_API_KEY: process.env.YOUTUBE_API_KEY,
+    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+    GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+    GOOGLE_REDIRECT_URI: process.env.GOOGLE_REDIRECT_URI,
 }
+
+export default env;

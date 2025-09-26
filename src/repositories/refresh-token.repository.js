@@ -1,6 +1,6 @@
-import { RefreshToken } from "../models/refresh-token.model.js";
+import RefreshToken from "../models/refresh-token.model.js";
 
-export const RefreshTokenRepository = {
+const RefreshTokenRepository = {
     async create(data) {
         return await RefreshToken.create(data);
     },
@@ -27,3 +27,5 @@ export const RefreshTokenRepository = {
         );
     }
 }
+
+export default RefreshTokenRepository;

@@ -1,7 +1,7 @@
 import multer from "multer";
 import path from "path";
 import fs from "fs";
-import { UPLOAD_TYPE } from "../constants/upload-type.constant.js";
+import UPLOAD_TYPE from "../constants/upload-type.constant.js";
 import { BaseError } from "../utils/base-error.util.js";
 
 const storage = multer.diskStorage({
@@ -10,7 +10,7 @@ const storage = multer.diskStorage({
             const type = req.query.type;
             let id;
             const mimetype = file.mimetype.split("/")[0];
-            
+
             // Determine the upload directory based on the type
             switch (type) {
                 case UPLOAD_TYPE.AVATAR:
@@ -53,7 +53,7 @@ const upload = multer({
 });
 
 // Middleware wrapper: fields thay vì single
-export const uploadFile = (req, res, next) => {
+const uploadFile = (req, res, next) => {
     const fields = [
         { name: "file", maxCount: 10 }
     ];

@@ -1,8 +1,7 @@
 import jwt from "jsonwebtoken";
-import { env } from "../config/environment.config.js";
+import env from "../config/environment.config.js";
 
-export const jwtUtils = {
-
+const jwtUtils = {
     //Generate access token
     signAccessToken(user) {
         const payload = { userId: user._id, email: user.email, role: user.role };
@@ -23,5 +22,11 @@ export const jwtUtils = {
     //Verify refresh token
     verifyRefreshToken(token) {
         return jwt.verify(token, env.REFRESH_TOKEN_SECRET);
-    }
+    },
+
+    decode(token) {
+        return jwt.decode(token);
+    },
 };
+
+export default jwtUtils;

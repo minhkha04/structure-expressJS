@@ -1,7 +1,7 @@
 import express from 'express';
-import { validate } from '../middlewares/validate.middleware.js';
+import validate from '../middlewares/validate.middleware.js';
 import { LoginRequest, RegisterRequest, ResetPasswordRequest, UpdatePasswordRequest } from '../validators/auth.validator.js';
-import { AuthController } from '../controllers/auth.controller.js';
+import AuthController from '../controllers/auth.controller.js';
 import { clientInfo } from '../middlewares/client-info.middleware.js';
 import { authenticate } from '../middlewares/auth.middleware.js';
 
@@ -14,6 +14,7 @@ authRoute.put('/reset-password', validate(ResetPasswordRequest), clientInfo, Aut
 authRoute.put('/update-password', authenticate, validate(UpdatePasswordRequest), AuthController.updatePassword);
 authRoute.put('/refresh-token', clientInfo, AuthController.refreshToken);
 authRoute.post('/logout', clientInfo, AuthController.logout);
+authRoute.get('/google/callback', clientInfo, AuthController.googleCallback);
 
 
 export default authRoute;

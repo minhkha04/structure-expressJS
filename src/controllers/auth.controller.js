@@ -1,7 +1,7 @@
-import { AuthService } from "../services/auth.service.js";
+import AuthService from "../services/auth.service.js";
 import { successResponse } from "../utils/response.util.js";
 
-export const AuthController = {
+const AuthController = {
     async login(req, res) {
         const { email, password, tokenThirdParty } = req.body;
         const type = req.query.type;
@@ -46,7 +46,6 @@ export const AuthController = {
         return successResponse(res, result, "Refresh token successful");
     },
 
-
     async sendOtp(req, res) {
         const { email } = req.body;
         const { type } = req.query;
@@ -60,4 +59,16 @@ export const AuthController = {
         await AuthService.logout(refreshToken, ip);
         return successResponse(res, null, "Logout successful");
     },
+
+    async googleCallback(req, res) {
+        const { code } = req.query;
+        const ip = req.clientIp;
+        const device = req.device;
+        console.log('Client IP:', ip);
+        console.log('Client Device:', device);
+        const result = await AuthService.handleGoogleCallback(code);
+        return successResponse(res, result, "Login with Google successful");
+    }
 };
+
+export default AuthController;

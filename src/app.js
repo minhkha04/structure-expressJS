@@ -1,5 +1,5 @@
 import express from 'express';
-import { env } from './config/environment.config.js';
+import env from './config/environment.config.js';
 import cors from 'cors';
 import connectDB from './config/database.config.js';
 import rootRouter from './routes/root.route.js';

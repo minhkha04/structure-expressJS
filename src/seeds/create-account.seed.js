@@ -1,7 +1,7 @@
-import { env } from '../config/environment.config.js'
-import { ACCOUNT_TYPE } from '../constants/account-type.constant.js';
-import { ROLE } from '../constants/role.constant.js'
-import { UserRepository } from '../repositories/user.repository.js';
+import env from '../config/environment.config.js';
+import ACCOUNT_TYPE from '../constants/account-type.constant.js';
+import ROLE from '../constants/role.constant.js';
+import UserRepository from '../repositories/user.repository.js';
 import { hash } from '../utils/bcrypt.util.js';
 
 export const CreateAccountSeed = async () => {

@@ -1,4 +1,4 @@
-export const toUserResponse = (user) => {
+const toUserResponse = (user) => {
     return {
         id: user.id,
         email: user.email,
@@ -11,3 +11,5 @@ export const toUserResponse = (user) => {
         isActive: user.isActive,
     };
 }
+
+export default toUserResponse;

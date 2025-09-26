@@ -1,6 +1,8 @@
-export const MAIL_TYPE = Object.freeze({
+const MAIL_TYPE = Object.freeze({
     RESET_PASSWORD: 'RESET_PASSWORD',
     SIGN_UP: 'SIGN_UP',
     REGISTER_SUCCESS: 'REGISTER_SUCCESS',
     ACCOUNT_CREATED: "ACCOUNT_CREATED",
 });
+
+export default MAIL_TYPE;

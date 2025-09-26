@@ -1,5 +1,5 @@
 import { BaseError } from "../utils/base-error.util.js";
-import { jwtUtils } from "../utils/jwt.util.js";
+import jwtUtils from "../utils/jwt.util.js";
 
 
 // Middleware to authenticate user by verifying JWT token

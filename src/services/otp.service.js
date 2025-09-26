@@ -1,8 +1,8 @@
-import { env } from '../config/environment.config.js';
-import { OtpRepository } from '../repositories/otp.repository.js';
+import env from '../config/environment.config.js';
+import OtpRepository from '../repositories/otp.repository.js';
 import { compare, hash } from '../utils/bcrypt.util.js';
 
-export const OtpService = {
+const OtpService = {
     async generate(email) {
         await OtpRepository.deleteByEmail(email);
         const otp = Math.floor(100000 + Math.random() * 900000).toString();
@@ -30,3 +30,5 @@ export const OtpService = {
         return true;
     }
 };
+
+export default OtpService;

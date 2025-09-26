@@ -1,9 +1,9 @@
-import { jwtUtils } from "../utils/jwt.util.js";
+import jwtUtils from "../utils/jwt.util.js";
 import { sha256 } from "../utils/crypto.util.js";
-import { RefreshTokenRepository } from "../repositories/refresh-token.repository.js";
+import RefreshTokenRepository from "../repositories/refresh-token.repository.js";
 import { BaseError } from "../utils/base-error.util.js";
 
-export const RefreshTokenService = {
+const RefreshTokenService = {
     async generate(user, createdByIp, device) {
         // Sinh JWT refresh token
         const refreshToken = jwtUtils.signRefreshToken(user);
@@ -47,7 +47,7 @@ export const RefreshTokenService = {
     async rotate(oldRefreshToken, user, createdByIp, device) {
         const oldHash = sha256(oldRefreshToken);
         const oldTokenDoc = await RefreshTokenRepository.findByHash(oldHash);
-        
+
         if (!oldTokenDoc) {
             throw new BaseError(401, "Refresh token not found");
         }
@@ -89,7 +89,9 @@ export const RefreshTokenService = {
         }
     },
 
-    async revokeAllForUser(userId, ) {
+    async revokeAllForUser(userId,) {
         await RefreshTokenRepository.revokeAllForUser(userId);
     }
 };
+
+export default RefreshTokenService;

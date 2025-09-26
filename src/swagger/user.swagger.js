@@ -1,6 +1,6 @@
-import { UserSchemas } from "../schemas/user.schema.js";
+import UserSchemas from "../schemas/user.schema.js";
 
-export const UserSwagger = {
+const UserSwagger = {
     '/api/users/my-profile': {
         get: {
             tags: ['Users'],
@@ -29,3 +29,5 @@ export const UserSwagger = {
         },
     }
 };
+
+export default UserSwagger;

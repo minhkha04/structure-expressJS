@@ -1,6 +1,6 @@
 import { BaseError } from "../utils/base-error.util.js";
 
-export const validate = (schema) => {
+const validate = (schema) => {
     return (req, res, next) => {
         const { error, value } = schema.validate(req.body, { abortEarly: false });
         if (error) {
@@ -18,3 +18,5 @@ export const validate = (schema) => {
         next();
     };
 };
+
+export default validate;
