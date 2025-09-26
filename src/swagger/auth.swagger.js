@@ -1,5 +1,5 @@
-import { ACCOUNT_TYPE } from '../contants/account-type.contant.js';
-import { MAIL_TYPE } from '../contants/mail.contant.js';
+import { ACCOUNT_TYPE } from '../constants/account-type.constant.js';
+import { MAIL_TYPE } from '../constants/mail.constant.js';
 import { AuthSchemas } from '../schemas/auth.schema.js';
 
 export const AuthSwagger = {

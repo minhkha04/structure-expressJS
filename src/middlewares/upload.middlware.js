@@ -1,7 +1,7 @@
 import multer from "multer";
 import path from "path";
 import fs from "fs";
-import { UPLOAD_TYPE } from "../contants/upload-type.contant.js";
+import { UPLOAD_TYPE } from "../constants/upload-type.constant.js";
 import { BaseError } from "../utils/base-error.util.js";
 
 const storage = multer.diskStorage({

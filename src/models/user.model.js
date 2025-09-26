@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import { ACCOUNT_TYPE } from '../contants/account-type.contant.js';
-import { ROLE } from '../contants/role.contant.js';
+import { ACCOUNT_TYPE } from '../constants/account-type.constant.js';
+import { ROLE } from '../constants/role.constant.js';
 
 // Định nghĩa schema cho User
 const userSchema = new mongoose.Schema({

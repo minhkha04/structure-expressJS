@@ -1,13 +1,13 @@
 import { BaseError } from "../utils/base-error.util.js";
-import { ACCOUNT_TYPE } from "../contants/account-type.contant.js";
+import { ACCOUNT_TYPE } from "../constants/account-type.constant.js";
 import { UserRepository } from "../repositories/user.repository.js";
 import { jwtUtils } from "../utils/jwt.util.js";
 import { RefreshTokenService } from "./refresh-token.service.js";
 import { compare, hash } from "../utils/bcrypt.util.js";
 import { OtpService } from "./otp.service.js";
 import { sendMail } from "./mail.service.js";
-import { env } from "../config/environment.js";
-import { MAIL_TYPE } from "../contants/mail.contant.js";
+import { env } from "../config/environment.config.js";
+import { MAIL_TYPE } from "../constants/mail.constant.js";
 
 export const AuthService = {
     async login(email, password, tokenThirdParty, type, ip, device) {

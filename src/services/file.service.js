@@ -1,5 +1,5 @@
 import path from "path";
-import { UPLOAD_TYPE } from "../contants/upload-type.contant.js";
+import { UPLOAD_TYPE } from "../constants/upload-type.constant.js";
 import { UserService } from "./user.service.js";
 import fs from "fs";
 

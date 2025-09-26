@@ -1,8 +1,8 @@
 import nodemailer from "nodemailer";
-import { MAIL_TYPE } from "../contants/mail.contant.js"; // nhớ thêm .js khi import file local
+import { MAIL_TYPE } from "../constants/mail.constant.js";
 import fs from "fs-extra";
 import handlebars from "handlebars";
-import { env } from "../config/environment.js";
+import { env } from "../config/environment.config.js";
 import { BaseError } from "../utils/base-error.util.js";
 
 const transporter = nodemailer.createTransport({

@@ -1,4 +1,4 @@
-import { UPLOAD_TYPE } from "../contants/upload-type.contant.js";
+import { UPLOAD_TYPE } from "../constants/upload-type.constant.js";
 
 export const UploadFileSwagger = {
     '/api/files/upload': {

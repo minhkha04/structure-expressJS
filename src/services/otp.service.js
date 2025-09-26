@@ -1,4 +1,4 @@
-import { env } from '../config/environment.js';
+import { env } from '../config/environment.config.js';
 import { OtpRepository } from '../repositories/otp.repository.js';
 import { compare, hash } from '../utils/bcrypt.util.js';
 

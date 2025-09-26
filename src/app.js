@@ -1,7 +1,7 @@
 import express from 'express';
-import { env } from './config/environment.js'; 
+import { env } from './config/environment.config.js';
 import cors from 'cors';
-import connectDB from './config/database.js';
+import connectDB from './config/database.config.js';
 import rootRouter from './routes/root.route.js';
 import swaggerDocument from './swagger/index.js';
 import swaggerUi from 'swagger-ui-express';
