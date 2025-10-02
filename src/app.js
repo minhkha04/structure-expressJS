@@ -7,6 +7,8 @@ import swaggerDocument from './swagger/index.js';
 import swaggerUi from 'swagger-ui-express';
 import { errorHandler } from "./middlewares/error-handle.middleware.js";
 import { CreateAccountSeed } from './seeds/create-account.seed.js';
+import rateLimit from 'express-rate-limit';
+import { errorResponse } from './utils/response.util.js';
 
 const app = express();
 const PORT = env.PORT;
@@ -49,7 +51,17 @@ app.listen(PORT, () => {
     console.log(`Server is running on port: ${PORT}`);
 });
 
-app.use(PREFIX_API, rootRouter);
+const apiLimiter = rateLimit({
+    windowMs: 60 * 1000, // 1 phút
+    max: 100,             // tối đa 100 request trong 1 phút
+    standardHeaders: true,
+    legacyHeaders: false,
+    handler: (req, res, next) => {
+        return errorResponse(res, { message: "Too many requests, please try again later." }, 429);
+    }
+});
+
+app.use(PREFIX_API, apiLimiter, rootRouter);
 CreateAccountSeed();
 app.use(errorHandler);
 

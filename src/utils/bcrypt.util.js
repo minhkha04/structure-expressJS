@@ -5,6 +5,5 @@ export const hash = async (plain) => {
 };
 
 export const compare = async (plain, hashed) => {
-    console.log(plain, hashed);
     return bcrypt.compare(plain, hashed);
 };
