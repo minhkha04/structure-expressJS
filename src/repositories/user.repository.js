@@ -16,6 +16,17 @@ const UserRepository = {
 
     async findById(userId) {
         return await User.findById(userId);
+    },
+
+    async getAllUsers(page, size) {
+        const skip = (page - 1) * size;
+        const [users, total] = await Promise.all([
+            User.find()
+                .skip(skip)
+                .limit(size),
+            User.countDocuments()
+        ]);
+        return { users, total };
     }
 }
 

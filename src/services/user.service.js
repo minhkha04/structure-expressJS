@@ -1,6 +1,7 @@
 import toUserResponse from "../mapper/user.mapper.js";
 import UserRepository from "../repositories/user.repository.js";
 import { BaseError } from "../utils/base-error.util.js";
+import { createPagination } from "../utils/response.util.js";
 import FileService from "./file.service.js";
 
 const UserService = {
@@ -31,6 +32,13 @@ const UserService = {
         }
         const userUpdated = await UserRepository.updateUser(userId, { avatarUrl: avatarUrl });
         return toUserResponse(userUpdated);
+    },
+
+    async getAllUsers(page, size) {
+        const { users, total } = await UserRepository.getAllUsers(page, size);
+        const userResponses = users.map(user => toUserResponse(user));
+        const pagintation = createPagination(page, size, total);
+        return { data: userResponses, pagintation };
     }
 }
 

@@ -2,6 +2,8 @@ import AuthSwagger from '../swagger/auth.swagger.js';
 import env from '../config/environment.config.js';
 import UserSwagger from './user.swagger.js';
 import UploadFileSwagger from './files.swagger.js';
+import AdminSwagger from './admin.swagger.js';
+
 const swaggerDocument = {
 
     openapi: '3.0.0',
@@ -21,6 +23,7 @@ const swaggerDocument = {
         ...AuthSwagger,
         ...UserSwagger,
         ...UploadFileSwagger,
+        ...AdminSwagger,
     },
 
     components: {
